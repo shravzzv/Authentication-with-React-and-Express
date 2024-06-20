@@ -1,9 +1,8 @@
 const asyncHandler = require('express-async-handler')
+const User = require('../models/user')
 
 /**
  * Renders the home page of the REST API.
- * @param {*} req
- * @param {*} res
  */
 exports.index = (req, res) => {
   res.render('index')
@@ -26,3 +25,11 @@ exports.signin = [
     res.send('signin post not implemented')
   }),
 ]
+
+/**
+ * Get all the users.
+ */
+exports.getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({}, '-password')
+  res.json(users)
+})
