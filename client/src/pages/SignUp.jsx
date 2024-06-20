@@ -1,8 +1,28 @@
-export default function SignUp() {
+import PropTypes from 'prop-types'
+import { useNavigate, Navigate } from 'react-router-dom'
+
+SignUp.propTypes = {
+  user: PropTypes.any.isRequired,
+  login: PropTypes.func.isRequired,
+}
+
+export default function SignUp({ user, login }) {
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    login()
+    navigate('/')
+  }
+
+  if (user) {
+    return <Navigate to={'/'} replace />
+  }
+
   return (
     <>
       <h1>Sign Up</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className='formControl'>
           <label htmlFor='username'>Username:</label>
           <input
