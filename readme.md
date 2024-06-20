@@ -1,7 +1,8 @@
 # Authentication with React and Express
 
-![Project screenshot](https://)
-[Project demo](https://)
+[Client deployment](https://authentication-with-react-and-express.vercel.app/)
+
+[API deployment](https://react-and-express-auth-api.adaptable.app/)
 
 ## Description
 
