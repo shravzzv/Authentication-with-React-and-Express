@@ -15,7 +15,7 @@ exports.index = (req, res) => {
  * Handle the signup post request.
  *
  * Validates the username and password fields in the req.body and returns any errors if present.
- * If no errors are present, creates a new user in the database and returns the user object with the username field and a jwt token as the response.
+ * If no errors are present, creates a new user in the database and returns a jwt token as the response which contains the user id as the payload.
  */
 exports.signup = [
   body('username')
@@ -51,7 +51,7 @@ exports.signup = [
         expiresIn: '1h',
       })
 
-      res.json({ username, token })
+      res.json({ token })
     } else {
       res.status(403).json(errors.array())
     }
@@ -60,15 +60,53 @@ exports.signup = [
 
 /**
  * Handle the signin post request.
+ *
+ * Validates the username and password inputs. Checks if they are correct. If not, returns an errors arrays as the json response.
+ * If there are no errors, returns a JWT as the response.
  */
 exports.signin = [
+  body('username')
+    .trim()
+    .isLength({ min: 3, max: 32 })
+    .withMessage('Username must be 3-32 characters long.')
+    .bail()
+    .escape()
+    .custom(async (username, { req }) => {
+      const user = await User.findOne({ username }, '_id password')
+      if (user) req.user = user
+      if (!user) throw new Error(`Username ${username} doesn't exist.`)
+    }),
+
+  body('password')
+    .trim()
+    .isLength({ min: 8 })
+    .withMessage('Password must be atleast 8 characters long.')
+    .bail()
+    .custom(async (password, { req }) => {
+      if (req.user && !(await bcrypt.compare(password, req.user.password))) {
+        throw new Error('Incorrect password.')
+      }
+    }),
+
   asyncHandler(async (req, res) => {
-    res.send('signin post not implemented')
+    const errors = validationResult(req)
+
+    if (errors.isEmpty()) {
+      const token = jwt.sign({ id: req.user.id }, process.env.JWT_SECRET, {
+        expiresIn: '1h',
+      })
+
+      res.json({ token })
+    } else {
+      res.status(403).json(errors.array())
+    }
   }),
 ]
 
 /**
  * Get all the users.
+ *
+ * todo: make this an authenticated route requiring a JWT
  */
 exports.getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({}, '-password')

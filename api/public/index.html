@@ -22,15 +22,15 @@
       <dt><code>POST /signup</code></dt>
       <dd>
         Requires a username (8-32 characters) and a password (min. 8 characters)
-        in the body. If valid parameters are passed in the request body, returns
-        a user object with a username field and a JWT token, or else returns the
-        errors in a json format. The JWT contains the user document's id from
-        the database as the payload guarded by a strong secret.
+        in the body. If valid parameters are passed in the request body returns
+        a JWT token, or else returns the errors as json. The JWT contains the
+        user document's id from the database as the payload guarded by a strong
+        secret.
       </dd>
       <dt><code>POST /signin</code></dt>
       <dd>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem,
-        nam.
+        Requires a username and password similar to the signup route. Returns
+        validation errors if there are any. If there are none, returns a JWT.
       </dd>
       <dt>
         <a href="/users">
