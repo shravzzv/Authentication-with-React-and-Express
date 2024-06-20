@@ -1,9 +1,6 @@
-import Navbar from '../components/Navbar'
-
 export default function SignUp() {
   return (
     <>
-      <Navbar />
       <h1>Sign Up</h1>
       <form>
         <div className='formControl'>
