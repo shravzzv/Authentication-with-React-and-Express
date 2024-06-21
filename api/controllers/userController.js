@@ -15,7 +15,7 @@ exports.index = (req, res) => {
  * Handle the signup post request.
  *
  * Validates the username and password fields in the req.body and returns any errors if present.
- * If no errors are present, creates a new user in the database and returns a jwt token as the response which contains the user id as the payload.
+ * If no errors are present, creates a new user in the database and returns a jwt token as the response.
  */
 exports.signup = [
   body('username')
@@ -105,8 +105,6 @@ exports.signin = [
 
 /**
  * Get all the users.
- *
- * todo: make this an authenticated route requiring a JWT
  */
 exports.getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({}, '-password')
