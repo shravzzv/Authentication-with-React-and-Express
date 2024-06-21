@@ -1,13 +1,45 @@
-<html>
-
-<head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-
-<body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
-</body>
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REST API</title>
+    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <script src="javascripts/script.js"></script>
+  </head>
+  <body>
+    <h1>REST API for the "Authentication with React and Express" project.</h1>
+    <p>It contains the following routes:</p>
+    <dl>
+      <dt><code>POST /signup</code></dt>
+      <dd>
+        Requires a username (8-32 characters) and a password (min. 8 characters)
+        in the body. If valid parameters are passed in the request body returns
+        a JWT token, or else returns the errors as json.
+      </dd>
+      <dt><code>POST /signin</code></dt>
+      <dd>
+        Requires a username and password similar to the signup route. Returns
+        validation errors if there are any. If there are none, returns a JWT.
+      </dd>
+      <dt>
+        <a href="/users">
+          <code>GET /users</code>
+        </a>
+      </dt>
+      <dd>
+        Requires authorization via a bearer token. Returns a json list of all
+        the users in the database if authorized, otherwise returns an error
+        message.
+      </dd>
+    </dl>
+  </body>
 </html>

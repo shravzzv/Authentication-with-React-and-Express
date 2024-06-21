@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
+const userController = require('../controllers/userController')
+const protect = require('../middleware/protect.middleware')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/', protect, userController.getUsers)
 
-module.exports = router;
+module.exports = router
