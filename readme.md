@@ -6,37 +6,18 @@
 
 ## Description
 
-Briefly describe your project here. What does it do? Why is it useful?
-[Project Source](https://)
+This is a simple React app that implements authorization via a `jsonwebtoken`. It sends requests to an Express REST API.
 
 ## Features
 
-- Clearly list the key features of your project.
-- Be concise and informative.
+- Sign up new users using a username and password.
+- Sign in using username and password.
+- Protected routes in the client.
+- Protected routes in the api.
 
 ## Technologies Used
 
-- List the technologies and languages you used in your project, e.g., JavaScript, HTML, CSS, etc.
-
-<!-- Change the ?i=js,html,css to a list of your skills seprated by ','! You can find a full list of icons [here](https://github.com/tandpfun/skill-icons#icons-list). -->
-
-[![My Skills](https://skillicons.dev/icons?i=babel,bash,css,express,figma,git,github,html,js,jest,md,mongodb,netlify,nextjs,nodejs,postgres,postman,react,sass,ts,vercel,vscode,webpack)](https://skillicons.dev)
-
-## Installation
-
-To install the project, follow these steps:
-
-```bash
-git clone [repository_link]
-cd project-folder
-install project
-```
-
-Replace `[repository_link]` with the actual link to your repository.
-
-## Usage
-
-Explain how to use your project, provide examples if possible.
+[![My Skills](https://skillicons.dev/icons?i=react,express,css,mongodb,postman,vercel,vscode)](https://skillicons.dev)
 
 ## How to Contribute
 
@@ -46,8 +27,8 @@ If you'd like to contribute, follow these steps:
 2. Clone your fork locally.
 
    ```bash
-   git clone [your_forked_repository_link]
-   cd project-folder
+   git clone https://github.com/shravzzv/Authentication-with-React-and-Express
+   cd Authentication-with-React-and-Express
    ```
 
 3. Create a new branch for your feature or bug fix.
@@ -68,9 +49,7 @@ If you'd like to contribute, follow these steps:
 
 ## Issue Tracker
 
-Find a bug or want to request a new feature? Please let us know by submitting an issue.
-
-- [Issue Tracker](https://github.com/project/project/issues)
+Find a bug or want to request a new feature? Please let us know by submitting an issue at the [Issue Tracker](https://github.com/shravzzv/Authentication-with-React-and-Express/issues).
 
 ## License
 
