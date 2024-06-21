@@ -29,11 +29,15 @@ export default function SignIn({ token, updateToken }) {
     e.preventDefault()
 
     try {
-      const res = await axios.post('http://localhost:3000/signin', data, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+      const res = await axios.post(
+        'https://react-and-express-auth-api.adaptable.app/signin',
+        data,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
       const token = res.data.token
       updateToken(token)
       localStorage.setItem('token', JSON.stringify(token))

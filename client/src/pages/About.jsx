@@ -11,11 +11,14 @@ export default function About() {
       try {
         setIsLoading(true)
         const token = JSON.parse(localStorage.getItem('token'))
-        const res = await axios.get('http://localhost:3000/users', {
-          headers: {
-            Authorization: 'Bearer ' + token,
-          },
-        })
+        const res = await axios.get(
+          'https://react-and-express-auth-api.adaptable.app/users',
+          {
+            headers: {
+              Authorization: 'Bearer ' + token,
+            },
+          }
+        )
         if (res.status === 200) setUsers(res.data)
       } catch (error) {
         setError(error.response.data.message)
