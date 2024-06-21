@@ -1,4 +1,5 @@
 export default function About() {
+  // todo: make an authenticated request to the api to get all users and display them here.
   return (
     <>
       <h1>About us</h1>

@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 Navbar.propTypes = {
-  user: PropTypes.any.isRequired,
+  token: PropTypes.any.isRequired,
 }
 
-export default function Navbar({ user }) {
+export default function Navbar({ token }) {
   return (
     <nav>
       <ul>
-        {user ? (
+        {token ? (
           <>
             <li>
               <Link to='/'>Home</Link>

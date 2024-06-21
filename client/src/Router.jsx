@@ -9,49 +9,44 @@ import Error from './pages/Error'
 import ProtectedRoute from './components/ProtectedRoute'
 
 export default function Router() {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem('user')) || ''
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem('token')) || ''
   )
 
-  const handleLogin = (newUser = { username: 'Sai Shravan' }) => {
-    setUser(newUser)
-    localStorage.setItem('user', JSON.stringify(newUser))
-  }
-
   const handleLogout = () => {
-    setUser('')
-    localStorage.setItem('user', null)
+    setToken('')
+    localStorage.setItem('token', null)
   }
 
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Layout user={user} />,
-      errorElement: <Error user={user} />,
+      element: <Layout token={token} />,
+      errorElement: <Error token={token} />,
       children: [
         {
           path: '/',
           element: (
-            <ProtectedRoute user={user}>
-              <Home user={user} logout={handleLogout} />
+            <ProtectedRoute token={token}>
+              <Home logout={handleLogout} />
             </ProtectedRoute>
           ),
         },
         {
           path: '/about',
           element: (
-            <ProtectedRoute user={user}>
+            <ProtectedRoute token={token}>
               <About />
             </ProtectedRoute>
           ),
         },
         {
           path: '/signin',
-          element: <SignIn user={user} login={handleLogin} />,
+          element: <SignIn token={token} updateToken={setToken} />,
         },
         {
           path: '/signup',
-          element: <SignUp user={user} login={handleLogin} />,
+          element: <SignUp token={token} updateToken={setToken} />,
         },
       ],
     },
