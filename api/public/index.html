@@ -23,9 +23,7 @@
       <dd>
         Requires a username (8-32 characters) and a password (min. 8 characters)
         in the body. If valid parameters are passed in the request body returns
-        a JWT token, or else returns the errors as json. The JWT contains the
-        user document's id from the database as the payload guarded by a strong
-        secret.
+        a JWT token, or else returns the errors as json.
       </dd>
       <dt><code>POST /signin</code></dt>
       <dd>
@@ -37,7 +35,11 @@
           <code>GET /users</code>
         </a>
       </dt>
-      <dd>Returns a json list of all the users in the database.</dd>
+      <dd>
+        Requires authorization via a bearer token. Returns a json list of all
+        the users in the database if authorized, otherwise returns an error
+        message.
+      </dd>
     </dl>
   </body>
 </html>
